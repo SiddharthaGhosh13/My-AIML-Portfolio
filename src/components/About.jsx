@@ -13,10 +13,6 @@ export default function About() {
       className="relative border-b border-border bg-bg-secondary/40 py-20 md:py-28"
       aria-labelledby="about-heading"
     >
-      <div className="pointer-events-none absolute right-8 top-12 hidden font-label text-[10px] text-text-muted lg:block">
-        {'{'}
-        <span className="text-accent-secondary"> section_id:</span> &quot;about&quot; {'}'}
-      </div>
 
       <motion.div
         className="mx-auto grid max-w-content gap-12 px-5 md:grid-cols-[minmax(0,320px)_1fr] md:items-start md:gap-16 md:px-8"
