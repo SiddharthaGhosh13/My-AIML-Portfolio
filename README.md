@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="src/assets/Profile.jpg" alt="Siddhartha Ghosh" width="120" style="border-radius: 50%"/>
+<img src="src/assets/profile.jpg" alt="Siddhartha Ghosh" width="120" style="border-radius: 50%"/>
 
 # My-Portfolio — Siddhartha Ghosh
 
