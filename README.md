@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="src/assets/profile.jpg" alt="Siddhartha Ghosh" width="120" style="border-radius: 50%"/>
+<img src="src/assets/Profile.jpg" alt="Siddhartha Ghosh" width="120" style="border-radius: 50%"/>
 
 # My-Portfolio — Siddhartha Ghosh
 
@@ -84,7 +84,7 @@ My-Portfolio/
 
 ---
 
-## 🚀 Run Locally
+## Run Locally
 
 ```bash
 # 1. Clone the repository
@@ -104,7 +104,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## ✉️ EmailJS Setup (Contact Form)
+## EmailJS Setup (Contact Form)
 
 The contact form uses [EmailJS](https://emailjs.com) — no backend required.
 
@@ -136,7 +136,7 @@ git push
 
 ## Contact
 
-Open to **AI/ML internships**, **NLP research roles**, and **technical collaborations**.
+Open to **AI/ML Internships**, **NLP Research roles**, and **Technical Collaborations**.
 
 Reach me at **itzsiddharthaghosh13@gmail.com** or connect on [LinkedIn](https://linkedin.com/in/siddharthaghosh13).
 
