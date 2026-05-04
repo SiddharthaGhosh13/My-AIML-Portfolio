@@ -13,10 +13,6 @@ export default function About() {
       className="relative border-b border-border bg-bg-secondary/40 py-20 md:py-28"
       aria-labelledby="about-heading"
     >
-      <div className="pointer-events-none absolute right-8 top-12 hidden font-label text-[10px] text-text-muted lg:block">
-        {'{'}
-        <span className="text-accent-secondary"> section_id:</span> &quot;about&quot; {'}'}
-      </div>
 
       <motion.div
         className="mx-auto grid max-w-content gap-12 px-5 md:grid-cols-[minmax(0,320px)_1fr] md:items-start md:gap-16 md:px-8"
@@ -27,7 +23,7 @@ export default function About() {
         <motion.div variants={staggerItem} className="relative mx-auto w-full max-w-sm md:mx-0">
           <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-accent-primary/20 via-transparent to-accent-secondary/15 blur-xl" aria-hidden />
           <img
-            src= "src/assets/Profile.jpg"
+            src= "src/assets/profile.jpg"
             alt="Siddhartha Ghosh - Profile Picture"
             width={320}
             height={320}
