@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useScrollAnimation, staggerContainer, staggerItem } from '../hooks/useScrollAnimation'
 import { siteMeta } from '../data/site'
 import profilePlaceholder from '../assets/profile-placeholder.svg'
+import profilePic from '../assets/profile.jpg'
 
 export default function About() {
   const { ref, inView } = useScrollAnimation()
@@ -23,7 +24,7 @@ export default function About() {
         <motion.div variants={staggerItem} className="relative mx-auto w-full max-w-sm md:mx-0">
           <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-accent-primary/20 via-transparent to-accent-secondary/15 blur-xl" aria-hidden />
           <img
-            src= "src/assets/profile.jpg"
+            src={profilePic}
             alt="Siddhartha Ghosh - Profile Picture"
             width={320}
             height={320}
