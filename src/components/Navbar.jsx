@@ -3,9 +3,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { RiCloseLine, RiMenu3Line } from 'react-icons/ri'
 import { navLinks, siteMeta } from '../data/site'
 
-export default function Navbar({ activeId }) {
+const sectionIds = ['home', 'about', 'skills', 'projects', 'roadmap', 'experience', 'vision', 'contact']
+
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState(sectionIds[0])
+
+  const navbarItems = navLinks.map((item) => (item.id === 'hero' ? { ...item, id: 'home' } : item))
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -14,7 +19,58 @@ export default function Navbar({ activeId }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const closeMobileMenu = () => setMobileOpen(false)
+  useEffect(() => {
+    const observers = []
+    const visibilityMap = {}
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id)
+      if (!element) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            visibilityMap[id] = entry.intersectionRatio
+          })
+          const mostVisible = Object.keys(visibilityMap).reduce(
+            (max, key) => (visibilityMap[key] > visibilityMap[max] ? key : max),
+            sectionIds[0]
+          )
+          setActiveSection(mostVisible)
+        },
+        {
+          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
+          rootMargin: '-80px 0px -40% 0px',
+        }
+      )
+      observer.observe(element)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((obs) => obs.disconnect())
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+      if (scrolledToBottom) {
+        setActiveSection('contact')
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavClick = (id) => {
+    setActiveSection(id)
+    const element = document.getElementById(id)
+    if (element) {
+      const navbarHeight = 80
+      const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+    setMobileOpen(false)
+  }
 
   return (
     <motion.header
@@ -30,7 +86,11 @@ export default function Navbar({ activeId }) {
         aria-label="Primary"
       >
         <a
-          href="#hero"
+          href="#home"
+          onClick={(event) => {
+            event.preventDefault()
+            handleNavClick('home')
+          }}
           className="cursor-target group flex items-center gap-2 font-display text-sm font-semibold tracking-tight text-text-primary md:text-base"
           aria-label={`${siteMeta.name}, back to top`}
         >
@@ -41,19 +101,23 @@ export default function Navbar({ activeId }) {
         </a>
 
         <ul className="hidden flex-wrap items-center justify-end gap-1 text-[11px] font-label uppercase tracking-[0.14em] text-text-secondary md:flex md:gap-2 md:text-xs">
-          {navLinks.map((link) => {
-            const active = activeId === link.id
+          {navbarItems.map((item) => {
+            const active = activeSection === item.id
             return (
-              <li key={link.id}>
+              <li key={item.id}>
                 <a
-                  href={`#${link.id}`}
+                  href={`#${item.id}`}
+                  onClick={(event) => {
+                    event.preventDefault()
+                    handleNavClick(item.id)
+                  }}
                   className={`cursor-target relative rounded-md px-2 py-2 transition-colors hover:text-text-primary md:px-3 ${
                     active ? 'text-accent-primary' : ''
                   }`}
                   aria-current={active ? 'page' : undefined}
-                  aria-label={`Navigate to ${link.label} section`}
+                  aria-label={`Navigate to ${item.label} section`}
                 >
-                  {link.label}
+                  {item.label}
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
@@ -88,20 +152,23 @@ export default function Navbar({ activeId }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <ul className="mx-auto flex w-full max-w-6xl flex-col px-4 py-3 md:px-6 lg:px-8">
-              {navLinks.map((link) => {
-                const active = activeId === link.id
+              {navbarItems.map((item) => {
+                const active = activeSection === item.id
                 return (
-                  <li key={link.id}>
+                  <li key={item.id}>
                     <a
-                      href={`#${link.id}`}
-                      onClick={closeMobileMenu}
+                      href={`#${item.id}`}
+                      onClick={(event) => {
+                        event.preventDefault()
+                        handleNavClick(item.id)
+                      }}
                       className={`cursor-target flex min-h-11 w-full items-center rounded-md px-2 py-2 font-label text-xs uppercase tracking-[0.14em] transition-colors ${
                         active ? 'text-accent-primary' : 'text-text-secondary hover:text-text-primary'
                       }`}
                       aria-current={active ? 'page' : undefined}
-                      aria-label={`Navigate to ${link.label} section`}
+                      aria-label={`Navigate to ${item.label} section`}
                     >
-                      {link.label}
+                      {item.label}
                     </a>
                   </li>
                 )

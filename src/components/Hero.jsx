@@ -110,7 +110,7 @@ export default function Hero() {
 
   return (
     <section
-      id="hero"
+      id="home"
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="hero-heading"
     >
