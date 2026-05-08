@@ -166,7 +166,7 @@ export default function Contact() {
               <p className="font-label text-[11px] uppercase tracking-[0.18em] text-text-muted">Direct</p>
               <a
                 href={`mailto:${siteMeta.email}`}
-                className="mt-3 flex min-h-11 items-center gap-3 break-all font-body text-text-primary transition hover:text-accent-primary"
+                className="mt-3 flex min-h-11 items-center gap-3 text-sm font-body text-text-primary transition hover:text-accent-primary"
                 aria-label={`Email ${siteMeta.email}`}
               >
                 <HiOutlineMail className="h-5 w-5 text-accent-secondary" aria-hidden />
