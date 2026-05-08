@@ -10,10 +10,10 @@ export default function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="relative border-b border-border bg-bg-secondary/30 py-20 md:py-28"
+      className="relative border-b border-border bg-bg-secondary/30 px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="projects-heading"
     >
-      <div className="mx-auto max-w-content px-5 md:px-8">
+      <div className="mx-auto w-full max-w-6xl">
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants} className="mb-14">
           <p className="font-label text-[13px] uppercase tracking-[0.24em] text-accent-primary">
             Projects
@@ -21,7 +21,7 @@ export default function Projects() {
         </motion.div>
 
         <motion.div
-          className="grid gap-6 lg:grid-cols-12 lg:gap-8"
+          className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8"
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={staggerContainer}
@@ -30,7 +30,7 @@ export default function Projects() {
             <motion.div
               key={project.id}
               variants={staggerItem}
-              className={project.featured ? 'lg:col-span-12' : 'lg:col-span-6'}
+              className={project.featured ? 'col-span-1 lg:col-span-2' : 'col-span-1'}
             >
               <ProjectCard project={project} />
             </motion.div>

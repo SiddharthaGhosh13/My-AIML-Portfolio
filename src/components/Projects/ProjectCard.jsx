@@ -44,7 +44,7 @@ export default function ProjectCard({ project }) {
         </div>
       </div>
 
-      <div className={`flex flex-1 flex-col gap-4 ${featured ? 'p-7 lg:p-9' : 'p-6'}`}>
+      <div className={`flex flex-1 flex-col gap-4 p-4 md:p-6 ${featured ? 'lg:p-8' : ''}`}>
         <div className="flex flex-wrap gap-2">
           {project.categories.map((c) => (
             <span
@@ -59,12 +59,14 @@ export default function ProjectCard({ project }) {
         <div className="space-y-2">
           <h3
             className={`font-display font-semibold tracking-tight text-text-primary ${
-              featured ? 'text-2xl lg:text-3xl' : 'text-xl'
+              featured ? 'text-lg md:text-2xl lg:text-3xl' : 'text-lg md:text-xl'
             }`}
           >
             {project.title}
           </h3>
-          <p className="font-body text-sm leading-relaxed text-text-secondary md:text-base">{project.description}</p>
+          <p className="line-clamp-3 font-body text-sm leading-relaxed text-text-secondary md:line-clamp-none md:text-base">
+            {project.description}
+          </p>
         </div>
 
         {project.features && (
@@ -81,11 +83,11 @@ export default function ProjectCard({ project }) {
           </p>
         )}
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 overflow-hidden">
           {project.techStack.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-border px-2 py-1 font-label text-[10px] uppercase tracking-wide text-text-muted"
+              className="rounded-full border border-border px-2 py-1 font-label text-xs uppercase tracking-wide text-text-muted"
             >
               {t}
             </span>
@@ -105,7 +107,7 @@ export default function ProjectCard({ project }) {
           </div>
         )}
 
-        <div className="mt-auto flex flex-wrap gap-3 pt-2">
+        <div className="mt-auto flex flex-wrap gap-2 pt-2">
           {project.links.map((link) => {
             const external = link.external
             const Icon = link.label === 'GitHub' ? FaGithub : FaArrowUpRightFromSquare

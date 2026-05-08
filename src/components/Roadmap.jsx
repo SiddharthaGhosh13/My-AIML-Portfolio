@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FiChevronDown } from 'react-icons/fi'
 import { useScrollAnimation, staggerContainer, staggerItem } from '../hooks/useScrollAnimation'
 import { roadmapPhases } from '../data/roadmap'
 
@@ -13,7 +14,7 @@ function PhaseCard({ phase }) {
   const ringClass = ring[phase.color]
 
   return (
-    <div className="relative flex min-h-[280px] w-[min(100%,320px)] shrink-0 snap-start flex-col rounded-2xl border border-border bg-bg-card p-6 shadow-card md:min-h-[300px] md:w-[300px] lg:w-[320px]">
+    <div className="relative flex min-h-[280px] w-full shrink-0 snap-start flex-col rounded-2xl border border-border bg-bg-card p-4 shadow-card md:min-h-[300px] md:w-[75vw] md:max-w-md md:p-6 lg:w-[45vw] xl:w-[32vw]">
       <div
         className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border bg-bg-secondary ${ringClass}`}
         aria-hidden
@@ -36,10 +37,10 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={ref}
-      className="relative border-b border-border py-20 md:py-28"
+      className="relative border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="roadmap-heading"
     >
-      <div className="mx-auto max-w-content px-5 md:px-8">
+      <div className="mx-auto w-full max-w-6xl">
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants} className="mb-10 md:mb-14">
           <p className="font-label text-[13px] uppercase tracking-[0.24em] text-accent-secondary">
             Roadmap
@@ -60,32 +61,32 @@ export default function Roadmap() {
           ))}
         </motion.div>
 
-        <div className="space-y-3 md:hidden" role="list">
+        <div className="relative space-y-3 pl-5 md:hidden" role="list">
+          <span
+            className="pointer-events-none absolute bottom-0 left-[14px] top-0 w-px bg-gradient-to-b from-accent-primary/45 via-accent-secondary/35 to-transparent"
+            aria-hidden
+          />
           {roadmapPhases.map((phase, idx) => {
             const Icon = phase.Icon
             const open = openIndex === idx
             const ringClass = ring[phase.color]
 
             return (
-              <div
-                key={phase.id}
-                className="overflow-hidden rounded-2xl border border-border bg-bg-card shadow-card"
-                role="listitem"
-              >
+              <div key={phase.id} className="relative overflow-hidden rounded-2xl border border-border bg-bg-card shadow-card" role="listitem">
+                <span
+                  className={`absolute -left-[20px] top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border bg-bg-secondary ${ringClass}`}
+                  aria-hidden
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                </span>
                 <button
                   type="button"
-                  className="cursor-target flex w-full items-center gap-4 px-4 py-4 text-left transition hover:bg-bg-secondary/80"
+                  className="cursor-target flex min-h-11 w-full items-center gap-4 px-4 py-4 text-left transition hover:bg-bg-secondary/80"
                   aria-expanded={open}
                   aria-controls={`roadmap-panel-${phase.id}`}
                   id={`roadmap-trigger-${phase.id}`}
                   onClick={() => setOpenIndex(open ? -1 : idx)}
                 >
-                  <span
-                    className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-bg-secondary ${ringClass}`}
-                    aria-hidden
-                  >
-                    <Icon className="h-4 w-4" />
-                  </span>
                   <span className="flex-1">
                     <span className="block font-label text-[10px] uppercase tracking-[0.2em] text-text-muted">
                       {phase.phase}
@@ -95,9 +96,10 @@ export default function Roadmap() {
                       {phase.months}
                     </span>
                   </span>
-                  <span className="font-label text-lg text-text-muted" aria-hidden>
-                    {open ? '−' : '+'}
-                  </span>
+                  <FiChevronDown
+                    className={`h-5 w-5 text-text-muted transition-transform ${open ? 'rotate-180' : ''}`}
+                    aria-hidden
+                  />
                 </button>
                 <AnimatePresence initial={false}>
                   {open && (

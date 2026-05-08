@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { useScrollAnimation, staggerContainer, staggerItem } from '../hooks/useScrollAnimation'
 import { siteMeta } from '../data/site'
-import profilePlaceholder from '../assets/profile-placeholder.svg'
 import profilePic from '../assets/profile.jpg'
 
 export default function About() {
@@ -11,38 +10,38 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative border-b border-border bg-bg-secondary/40 py-20 md:py-28"
+      className="relative border-b border-border bg-bg-secondary/40 px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="about-heading"
     >
 
       <motion.div
-        className="mx-auto grid max-w-content gap-12 px-5 md:grid-cols-[minmax(0,320px)_1fr] md:items-start md:gap-16 md:px-8"
+        className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 overflow-hidden md:grid-cols-2 md:items-start md:gap-12"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={staggerContainer}
       >
-        <motion.div variants={staggerItem} className="relative mx-auto w-full max-w-sm md:mx-0">
+        <motion.div variants={staggerItem} className="relative mx-auto w-full max-w-[200px] md:mx-0 md:max-w-sm">
           <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-accent-primary/20 via-transparent to-accent-secondary/15 blur-xl" aria-hidden />
           <img
             src={profilePic}
             alt="Siddhartha Ghosh - Profile Picture"
-            width={320}
-            height={320}
+            width={200}
+            height={200}
             loading="lazy"
             decoding="async"
             className="relative z-[1] w-full rounded-2xl border border-border object-cover shadow-card"
           />
-          <p className="mt-3 font-label text-[11px] uppercase tracking-wider text-text-muted">
+          <p className="mt-3 text-center font-label text-[11px] uppercase tracking-wider text-text-muted md:text-left">
             - Siddhartha Ghosh, Founder & CEO
           </p>
         </motion.div>
 
-        <motion.div variants={staggerItem} className="space-y-6">
+        <motion.div variants={staggerItem} className="space-y-6 text-center md:text-left">
           <p className="font-label text-[11px] uppercase tracking-[0.24em] text-accent-primary">
             About Me
           </p>
-          <p className="max-w-2xl font-body text-base leading-relaxed text-text-secondary md:text-lg">{siteMeta.shortBio}</p>
-          <dl className="grid gap-4 border-l border-border pl-5 font-label text-sm text-text-secondary md:grid-cols-2">
+          <p className="max-w-2xl break-words font-body text-sm leading-relaxed text-text-secondary md:text-base">{siteMeta.shortBio}</p>
+          <dl className="grid gap-4 border-l border-border pl-4 font-label text-sm text-text-secondary md:grid-cols-2 md:pl-5">
             <div>
               <dt className="text-text-muted">Location</dt>
               <dd className="text-text-primary">{siteMeta.location}</dd>

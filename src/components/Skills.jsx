@@ -16,10 +16,10 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="relative border-b border-border py-20 md:py-28"
+      className="relative overflow-hidden border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="skills-heading"
     >
-      <div className="mx-auto max-w-content px-5 md:px-8">
+      <div className="mx-auto w-full max-w-6xl">
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants} className="mb-12">
           <p className="font-label text-[13px] uppercase tracking-[0.24em] text-accent-secondary">
             Tech Stack
@@ -27,20 +27,20 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="space-y-12"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={staggerContainer}
         >
           {skillCategories.map((cat) => (
-            <motion.div key={cat.id} variants={staggerItem} className="space-y-4">
+            <motion.div key={cat.id} variants={staggerItem} className="space-y-4 rounded-2xl border border-border bg-bg-card p-4 md:p-5">
               <div className="flex flex-wrap items-baseline gap-3">
-                <h3 className="font-display text-lg text-text-primary md:text-xl">{cat.title}</h3>
+                <h3 className="font-display text-base text-text-primary md:text-lg">{cat.title}</h3>
                 <span className="font-label text-[10px] uppercase tracking-[0.2em] text-text-muted">
                   class:{cat.id}
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2 md:gap-3">
+              <div className="flex flex-wrap gap-2 overflow-hidden">
                 {cat.skills.map((skill, idx) => (
                   <motion.span
                     key={skill}
@@ -48,7 +48,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: '-10% 0px' }}
                     transition={{ delay: idx * 0.02, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className={`cursor-target rounded-full border px-3 py-2 font-label text-[11px] uppercase tracking-wider transition md:px-4 md:text-xs ${accentStyles[cat.accent]}`}
+                    className={`cursor-target rounded-full border px-2 py-1 font-label text-xs uppercase tracking-wider transition md:px-3 md:py-2 md:text-sm ${accentStyles[cat.accent]}`}
                   >
                     {skill}
                   </motion.span>

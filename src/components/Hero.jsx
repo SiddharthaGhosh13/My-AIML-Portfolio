@@ -46,6 +46,16 @@ function TypewriterRole() {
 }
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)')
+    const onChange = (event) => setIsMobile(event.matches)
+    setIsMobile(media.matches)
+    media.addEventListener('change', onChange)
+    return () => media.removeEventListener('change', onChange)
+  }, [])
+
   const particleOptions = useMemo(
     () => ({
       fullScreen: { enable: false },
@@ -53,7 +63,7 @@ export default function Hero() {
       fpsLimit: 60,
       detectRetina: true,
       particles: {
-        number: { value: 52 },
+        number: { value: isMobile ? 30 : 52 },
         color: { value: ['#F0A500', '#00D4FF', '#8B949E'] },
         opacity: { value: { min: 0.12, max: 0.42 } },
         size: { value: { min: 1, max: 2.5 } },
@@ -83,7 +93,7 @@ export default function Hero() {
         },
       },
     }),
-    []
+    [isMobile]
   )
 
   const container = {
@@ -101,7 +111,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden border-b border-border"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="hero-heading"
     >
       <div className="mesh-hero absolute inset-0" aria-hidden />
@@ -115,7 +125,7 @@ export default function Hero() {
       />
 
       <motion.div
-        className="relative z-10 mx-auto flex max-w-content flex-col items-start gap-8 px-5 pb-24 pt-28 md:px-8 md:pt-32"
+        className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-start gap-8 overflow-hidden px-0 pb-28 pt-28 md:pb-24 md:pt-32"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -130,32 +140,32 @@ export default function Hero() {
         <motion.div variants={item} className="space-y-4">
           <h1
             id="hero-heading"
-            className="font-display text-4xl font-semibold leading-tight tracking-tight text-text-primary md:text-6xl lg:text-7xl"
+            className="break-words font-display text-4xl font-semibold leading-tight tracking-tight text-text-primary md:text-6xl lg:text-8xl"
           >
             {siteMeta.name}
           </h1>
-          <p className="max-w-2xl font-body text-lg text-text-secondary md:text-xl">
+          <p className="max-w-2xl font-body text-xl text-text-secondary md:text-3xl">
             <span className="block font-display text-sm text-text-muted md:text-base">{siteMeta.title}</span>
             <span className="mt-3 block min-h-[2rem] md:min-h-[2.25rem]">
               <TypewriterRole />
             </span>
           </p>
-          <p className="max-w-2xl border-l-2 border-accent-primary/40 pl-5 font-body text-base italic text-text-primary/90 md:text-lg">
+          <p className="max-w-2xl break-words border-l-2 border-accent-primary/40 pl-5 font-body text-sm italic text-text-primary/90 md:text-base">
             “{siteMeta.tagline}”
           </p>
         </motion.div>
 
-        <motion.div variants={item} className="flex flex-wrap gap-3">
+        <motion.div variants={item} className="flex w-full flex-col gap-3 sm:w-auto md:flex-row">
           <a
             href="#projects"
-            className="cursor-target inline-flex items-center justify-center rounded-lg bg-accent-primary px-6 py-3 font-label text-xs font-semibold uppercase tracking-wider text-bg-primary shadow-glowamber transition hover:bg-accent-primary/90 focus-visible:ring-2 focus-visible:ring-accent-secondary"
+            className="cursor-target inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent-primary px-6 py-3 font-label text-xs font-semibold uppercase tracking-wider text-bg-primary shadow-glowamber transition hover:bg-accent-primary/90 focus-visible:ring-2 focus-visible:ring-accent-secondary md:w-auto"
             aria-label="View featured projects"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="cursor-target inline-flex items-center justify-center rounded-lg border border-border bg-bg-card px-6 py-3 font-label text-xs font-semibold uppercase tracking-wider text-text-primary transition hover:border-accent-secondary/50 hover:text-accent-secondary"
+            className="cursor-target inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-border bg-bg-card px-6 py-3 font-label text-xs font-semibold uppercase tracking-wider text-text-primary transition hover:border-accent-secondary/50 hover:text-accent-secondary md:w-auto"
             aria-label="Go to contact section"
           >
             Let&apos;s Connect
@@ -167,26 +177,26 @@ export default function Hero() {
             href={siteMeta.github}
             target="_blank"
             rel="noreferrer"
-            className="cursor-target rounded-lg border border-border bg-bg-secondary p-3 transition hover:border-accent-primary/40 hover:text-accent-primary"
+            className="cursor-target inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-bg-secondary p-2.5 transition hover:border-accent-primary/40 hover:text-accent-primary md:p-3"
             aria-label="GitHub profile"
           >
-            <FaGithub className="h-5 w-5" aria-hidden />
+            <FaGithub className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
           </a>
           <a
             href={siteMeta.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="cursor-target rounded-lg border border-border bg-bg-secondary p-3 transition hover:border-accent-secondary/40 hover:text-accent-secondary"
+            className="cursor-target inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-bg-secondary p-2.5 transition hover:border-accent-secondary/40 hover:text-accent-secondary md:p-3"
             aria-label="LinkedIn profile"
           >
-            <FaLinkedin className="h-5 w-5" aria-hidden />
+            <FaLinkedin className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
           </a>
           <a
             href={`mailto:${siteMeta.email}`}
-            className="cursor-target rounded-lg border border-border bg-bg-secondary p-3 transition hover:border-accent-primary/40 hover:text-accent-primary"
+            className="cursor-target inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-bg-secondary p-2.5 transition hover:border-accent-primary/40 hover:text-accent-primary md:p-3"
             aria-label={`Email ${siteMeta.email}`}
           >
-            <HiOutlineMail className="h-5 w-5" aria-hidden />
+            <HiOutlineMail className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
           </a>
         </motion.div>
 

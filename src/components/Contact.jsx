@@ -62,18 +62,18 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-20 md:py-28"
+      className="relative px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto max-w-content px-5 md:px-8">
+      <div className="mx-auto w-full max-w-6xl">
         <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants} className="mb-12">
           <p className="font-label text-[13px] uppercase tracking-[0.24em] text-accent-secondary">
             Contact
           </p>
-          <h2 id="contact-heading" className="mt-3 font-display text-3xl font-semibold text-text-primary md:text-5xl">
+          <h2 id="contact-heading" className="mt-3 font-display text-2xl font-semibold text-text-primary md:text-5xl">
             Let&apos;s Build Something Real!
           </h2>
-          <p className="mt-4 max-w-2xl font-body text-lg text-text-secondary">{siteMeta.contactSubtitle}</p>
+          <p className="mt-4 max-w-2xl font-body text-base text-text-secondary md:text-lg">{siteMeta.contactSubtitle}</p>
           <p className="mt-4 inline-flex flex-wrap gap-x-3 gap-y-2 rounded-lg border border-border bg-bg-card px-4 py-3 font-label text-[11px] uppercase tracking-[0.14em] text-text-muted">
             <span className="text-accent-primary">Currently open to:</span>
             <span>AI/ML Internships</span>
@@ -85,7 +85,7 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-          className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]"
+          className="grid gap-8 lg:grid-cols-2 lg:gap-10"
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={staggerContainer}
@@ -93,7 +93,7 @@ export default function Contact() {
           <motion.div variants={staggerItem}>
             <form
               onSubmit={handleSubmit}
-              className="space-y-5 rounded-2xl border border-border bg-bg-card p-6 shadow-card md:p-8"
+              className="w-full space-y-5 rounded-2xl border border-border bg-bg-card p-4 shadow-card md:p-8"
               noValidate
               aria-describedby={error ? 'contact-error' : undefined}
             >
@@ -161,12 +161,12 @@ export default function Contact() {
             </form>
           </motion.div>
 
-          <motion.div variants={staggerItem} className="space-y-6">
+          <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
             <div className="rounded-2xl border border-border bg-bg-secondary/80 p-6">
               <p className="font-label text-[11px] uppercase tracking-[0.18em] text-text-muted">Direct</p>
               <a
                 href={`mailto:${siteMeta.email}`}
-                className="mt-3 flex items-center gap-3 font-body text-text-primary transition hover:text-accent-primary"
+                className="mt-3 flex min-h-11 items-center gap-3 break-all font-body text-text-primary transition hover:text-accent-primary"
                 aria-label={`Email ${siteMeta.email}`}
               >
                 <HiOutlineMail className="h-5 w-5 text-accent-secondary" aria-hidden />
@@ -176,7 +176,7 @@ export default function Contact() {
 
             <div className="rounded-2xl border border-border bg-bg-secondary/80 p-6">
               <p className="font-label text-[11px] uppercase tracking-[0.18em] text-text-muted">Profiles</p>
-              <div className="mt-4 flex gap-3">
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={siteMeta.github}
                   target="_blank"
