@@ -37,7 +37,7 @@ export const projects = [
     description:
       'Fine-tuned a BERT-based model on domain-specific data for multi-class sentiment analysis. Achieved significant improvement over the base model via LoRA fine-tuning with PEFT. Deployed as a FastAPI endpoint.',
     techStack: ['Python', 'Hugging Face', 'PEFT / LoRA', 'FastAPI', 'Docker'],
-    metrics: ['93% accuracy', '3× faster inference vs. base (quantization)'],
+    metrics: ['93% accuracy', '3× Faster inference Vs Base (Quantization)'],
     links: [
       { label: 'GitHub', href: 'https://github.com/SiddharthaGhosh13', external: true },
       { label: 'Hugging Face Space', href: 'https://huggingface.co/spaces', external: true },
