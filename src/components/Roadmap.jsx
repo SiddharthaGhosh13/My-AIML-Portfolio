@@ -37,7 +37,7 @@ export default function Roadmap() {
     <section
       id="roadmap"
       ref={ref}
-      className="relative border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
+      className="relative overflow-x-hidden border-b border-border px-4 py-16 md:px-6 md:py-24 lg:px-8"
       aria-labelledby="roadmap-heading"
     >
       <div className="mx-auto w-full max-w-6xl">
@@ -61,7 +61,7 @@ export default function Roadmap() {
           ))}
         </motion.div>
 
-        <div className="relative space-y-3 pl-5 md:hidden" role="list">
+        <div className="relative space-y-3 overflow-x-hidden pl-4 md:hidden" role="list">
           <span
             className="pointer-events-none absolute bottom-0 left-[14px] top-0 w-px bg-gradient-to-b from-accent-primary/45 via-accent-secondary/35 to-transparent"
             aria-hidden
@@ -72,24 +72,26 @@ export default function Roadmap() {
             const ringClass = ring[phase.color]
 
             return (
-              <div key={phase.id} className="relative overflow-hidden rounded-2xl border border-border bg-bg-card shadow-card" role="listitem">
-                <span
-                  className={`absolute -left-[20px] top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border bg-bg-secondary ${ringClass}`}
-                  aria-hidden
-                >
-                  <Icon className="h-3.5 w-3.5" />
-                </span>
+              <div key={phase.id} className="relative overflow-hidden rounded-xl border border-border bg-bg-card shadow-card" role="listitem">
                 <button
                   type="button"
-                  className="cursor-target flex min-h-11 w-full items-center gap-4 px-4 py-4 text-left transition hover:bg-bg-secondary/80"
+                  className="cursor-target relative flex min-h-11 w-full items-center gap-4 rounded-xl p-4 text-left transition hover:bg-bg-secondary/80"
                   aria-expanded={open}
                   aria-controls={`roadmap-panel-${phase.id}`}
                   id={`roadmap-trigger-${phase.id}`}
                   onClick={() => setOpenIndex(open ? -1 : idx)}
                 >
                   <span className="flex-1">
-                    <span className="block font-label text-[10px] uppercase tracking-[0.2em] text-text-muted">
-                      {phase.phase}
+                    <span className="flex items-center gap-2">
+                      <span
+                        className={`inline-flex h-8 w-8 items-center justify-center rounded-full border bg-bg-secondary text-sm ${ringClass}`}
+                        aria-hidden
+                      >
+                        <Icon className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="block font-label text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                        {phase.phase}
+                      </span>
                     </span>
                     <span className="mt-1 block font-display text-base font-semibold text-text-primary">{phase.title}</span>
                     <span className="mt-1 block font-label text-[10px] uppercase tracking-wider text-accent-secondary">
