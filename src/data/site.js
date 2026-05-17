@@ -18,21 +18,21 @@ export const visionPhases = [
     number: '01',
     title: 'Skillful Engineer',
     body:
-      'Master AI/ML and build systems that are actually intelligent — not just statistically impressive. Specialize in NLP and the intersection of language, emotion, and machine understanding.',
+      'Master AI/ML and build systems that are actually intelligent — not just statistically impressive. Specialize in NLP and the intersection of Language, Emotion, and Machine Understanding.',
   },
   {
     id: 'entrepreneur',
     number: '02',
     title: 'Successful Entrepreneur',
     body:
-      'Build AI products that solve real human problems at scale. The goal is to make mental wellness and skill development accessible to every student in India and beyond.',
+      'Build AI products that solve real human problems at scale. The goal is to make Mental Wellness and Skill Development accessible to every student in India and beyond.',
   },
   {
     id: 'india',
     number: '03',
     title: 'Contributor to India',
     body:
-      "Use the leverage of technology and entrepreneurship to eventually influence education policy, skill development infrastructure, and India's AI strategy.",
+      "Use the leverage of Technology and Entrepreneurship to eventually influence Education Policy, Skill Development Infrastructure, and India's AI Strategy.",
   },
 ]
 
