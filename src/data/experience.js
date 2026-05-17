@@ -13,7 +13,7 @@ export const experienceItems = [
     org: 'E-Cell IIT Bombay',
     period: 'Jun 2025 – Feb 2026',
     description:
-      "Represented one of India's premier entrepreneurship cells, driving awareness and participation for startup events and entrepreneurship initiatives on campus.",
+      "Represented one of India's Premier Entrepreneurship Cells, driving awareness and participation for Startup events and Entrepreneurship initiatives on Campus.",
   },
   {
     id: 'btech',
