@@ -35,7 +35,7 @@ export const projects = [
     statusVariant: 'complete',
     categories: ['NLP', 'Fine-tuning'],
     description:
-      'Fine-tuned a BERT-based model on domain-specific data for multi-class sentiment analysis. Achieved significant improvement over the base model via LoRA fine-tuning with PEFT. Deployed as a FastAPI endpoint.',
+      'Fine-tuned a BERT-based model on domain-specific data for multi-class sentiment analysis. Achieved significant improvement over the base model via LoRA fine-tuning with PEFT. Deployed as a FastAPI Endpoint.',
     techStack: ['Python', 'Hugging Face', 'PEFT / LoRA', 'FastAPI', 'Docker'],
     metrics: ['93% accuracy', '3× Faster inference Vs Base (Quantization)'],
     links: [
