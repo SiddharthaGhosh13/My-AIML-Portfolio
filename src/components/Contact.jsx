@@ -7,11 +7,8 @@ import { useScrollAnimation, staggerContainer, staggerItem } from '../hooks/useS
 import { siteMeta } from '../data/site'
 
 /*
- * EmailJS (https://www.emailjs.com/) — template variables: {{from_name}}, {{reply_to}}, {{message}}
- * Credentials configured per project owner request. Rotate keys from the EmailJS dashboard if this repo is public.
+ * EmailJS(URL : https://www.emailjs.com/) — Template variables: {{from_name}}, {{reply_to}}, {{message}}
  */
-
-//Update Credentials
 const SERVICE_ID = 'service_t2qj5l7'
 const TEMPLATE_ID = 'template_55x7d7h'
 const PUBLIC_KEY = 'I8Nomv9Y10EEPdxOw'
